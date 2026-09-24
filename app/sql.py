@@ -5,14 +5,12 @@ import sqlite3
 import pandas as pd
 from pathlib import Path
 from dotenv import load_dotenv
+from config import GROQ_API_KEY, GROQ_MODEL_NAME
 
-load_dotenv()
-
-GROQ_MODEL = os.getenv('GROQ_MODEL')
 
 db_path = Path(__file__).parent.parent /"resources"/"db.sqlite"
 
-client_sql = Groq()
+client_sql = Groq(api_key=GROQ_API_KEY)
 
 sql_prompt = """You are an expert in understanding the database schema and generating SQL queries for a natural language question asked
 pertaining to the data you have. The schema is provided in the schema tags. 
@@ -62,7 +60,7 @@ def generate_sql_query(question):
                     "content": question,
                 }
             ],
-            model=os.environ['GROQ_MODEL'],
+            model=GROQ_MODEL_NAME,
             temperature=0.2,
             max_tokens=1024
         )
@@ -94,7 +92,7 @@ def data_comprehension(question, context):
                     "content": f"QUESTION: {question}. DATA: {context}",
                 }
             ],
-            model=os.environ['GROQ_MODEL'],
+            model=GROQ_MODEL_NAME,
             temperature=0.2,
         )
     except Exception as err:
