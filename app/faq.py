@@ -4,6 +4,7 @@ import chromadb
 from groq import Groq
 from dotenv import load_dotenv
 import os
+import streamlit as st
 
 load_dotenv()
 
@@ -11,7 +12,9 @@ load_dotenv()
 path = Path(__file__).parent.parent / "resources" / "faq_data.csv"
 chroma_client = chromadb.Client()
 collection_name = "faqs"
-groq_client = Groq()
+GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
+GROQ_MODEL_NAME = st.secrets["GROQ_MODEL_NAME"]
+groq_client = Groq(api_key=GROQ_API_KEY)
 
 
 def ingest_faq_data():
@@ -66,7 +69,7 @@ def generate_answer(query,context):
                 "content": prompt
                 }
             ],
-            model = os.environ['GROQ_MODEL'],
+            model = GROQ_MODEL_NAME
         )
     except Exception as e:
         print("Unable to generate answer",e)
