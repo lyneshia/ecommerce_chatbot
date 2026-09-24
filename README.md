@@ -193,16 +193,7 @@ Create a `.env` file in the project root:
 
 ``` env
 GROQ_API_KEY=your_groq_api_key
-```
-
-Do not commit `.env` or expose your API key publicly.
-
-The `.gitignore` file should include:
-
-``` gitignore
-.env
-venv/
-__pycache__/
+GROQ_MODEL = your_groq_model_name
 ```
 
 ## ▶️ Run the Application
@@ -240,126 +231,19 @@ Do I get a discount with an HDFC credit card?
 ### Product / SQL queries
 
 ``` text
-Show me some products.
+Show me some 3 Nike shoes with rating greater than 4.
 ```
 
 ``` text
-Give me the names of available products.
+Give me the names of available shoes.
 ```
 
 ``` text
-Find products under a specific price.
+Find shoes under a specific price.
 ```
 
 The semantic router determines the appropriate workflow before
 processing the query.
-
-## ☁️ Streamlit Cloud Deployment
-
-### 1. Push the project to GitHub
-
-Make sure the repository contains:
-
-``` text
-app/
-resources/
-requirements.txt
-.gitignore
-LICENSE
-```
-
-### 2. Configure dependencies
-
-Your `requirements.txt` should contain the packages required by the
-application.
-
-Example:
-
-``` text
-chromadb==1.5.9
-groq==1.7.0
-pandas==3.0.6
-python-dotenv==1.2.3
-semantic-router[local]==0.1.16
-streamlit==1.45.1
-```
-
-### 3. Add the Groq API key
-
-In Streamlit Cloud, add the API key through the application's Secrets
-configuration rather than committing it to GitHub.
-
-Example:
-
-``` toml
-GROQ_API_KEY = "your_groq_api_key"
-```
-
-The application can then access it through the environment or Streamlit
-secrets, depending on how the application code is configured.
-
-### 4. Set the main file
-
-Use:
-
-``` text
-app/main.py
-```
-
-as the Streamlit entry point.
-
-## ⚠️ Important Deployment Notes
-
--   Keep `resources/db.sqlite` in the repository if the deployed
-    application needs the bundled database.
--   Keep `resources/faq_data.csv` in the repository.
--   Do not commit API keys or `.env` files.
--   Make sure file paths are relative to the project root or otherwise
-    resolved consistently.
--   If ChromaDB creates a local persistent directory during execution,
-    remember that Streamlit Cloud storage is not intended to be
-    permanent application storage.
--   Pin package versions in `requirements.txt` to reduce
-    dependency-related deployment issues.
-
-## 🔒 Security
-
-Never hard-code credentials such as:
-
-``` python
-GROQ_API_KEY = "gsk_..."
-```
-
-Instead, use environment variables or Streamlit secrets.
-
-For local development:
-
-``` env
-GROQ_API_KEY=your_groq_api_key
-```
-
-For Streamlit Cloud, configure the secret through the platform.
-
-## 🚀 Future Improvements
-
-Potential enhancements include:
-
--   Product recommendation functionality
--   Order-status lookup using an order ID
--   Conversation-aware product search
--   Product filtering by category, price, and rating
--   Chat history persistence
--   User authentication
--   Improved response formatting with product cards
--   Deployment using a hosted database instead of SQLite
--   Evaluation of router accuracy and FAQ retrieval quality
-
-## 📄 License
-
-This project is distributed under the license included in the `LICENSE`
-file.
-
-------------------------------------------------------------------------
 
 ## 👩‍💻 Author
 
