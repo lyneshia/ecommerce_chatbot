@@ -2,18 +2,13 @@ from pathlib import Path
 import pandas as pd
 import chromadb
 from groq import Groq
-from dotenv import load_dotenv
-import os
 import streamlit as st
-
-load_dotenv()
+from config import GROQ_API_KEY, GROQ_MODEL_NAME
 
 
 path = Path(__file__).parent.parent / "resources" / "faq_data.csv"
 chroma_client = chromadb.Client()
 collection_name = "faqs"
-GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
-GROQ_MODEL_NAME = st.secrets["GROQ_MODEL_NAME"]
 groq_client = Groq(api_key=GROQ_API_KEY)
 
 
