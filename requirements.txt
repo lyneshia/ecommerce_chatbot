@@ -4,3 +4,5 @@ pandas==2.2.3
 python-dotenv==1.2.3
 semantic-router[local]==0.1.16
 streamlit==1.45.1
+torch==2.6.0
+torchvision==0.21.0
