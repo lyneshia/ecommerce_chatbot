@@ -9,7 +9,7 @@ from sql import sql_chain
 # Page configuration
 # ---------------------------------------------------------
 st.set_page_config(
-    page_title="E-Commerce Chat-Bot",
+    page_title="Flipbot - AI Powered E-Commerce Support Assistant for Flipkart",
     page_icon="🛒",
     layout="centered"
 )
