@@ -1,10 +1,7 @@
-# 🛒 E-Commerce Chatbot
+# 🛒 Flipbot - An AI Powered E-Commerce Chatbot
 
-An AI-powered e-commerce chatbot that provides a conversational
-interface for answering frequently asked questions and retrieving
-product information from an SQLite database. The application uses
-semantic routing to determine whether a user query should be handled by
-the FAQ or SQL workflow.
+E-commerce platforms such as Flipkart need fast, accurate answers to customer queries across products, orders and policies. This project builds an intelligent LLM-powered chatbot that understands user intent, routes queries to the right knowledge source, and delivers contextual responses.
+Flipbot is an AI-powered e-commerce chatbot that provides a conversational interface for answering frequently asked questions and retrieving product information from an SQLite database. The FAQ data has details about Flipkart's policies and queries. The SQLite database is created by web-scraping selected Flipkart product data using Selenium WebDriver, creating a realistic product dataset for chatbot interactions. The application uses semantic routing to determine whether a user query should be handled by the FAQ or SQL workflow.
 
 ## ✨ Features
 
@@ -245,7 +242,7 @@ Find shoes under a specific price.
 The semantic router determines the appropriate workflow before
 processing the query.
 
-## 👩‍💻 Author
+## 👩‍💻 Author - Lyneshia Correa
 
 Developed as an AI/GenAI e-commerce chatbot project demonstrating:
 
